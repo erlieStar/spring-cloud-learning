@@ -1,0 +1,47 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: cloud-provider-product
+  datasource:
+    druid:
+      url:  jdbc:mysql://www.erlie.cc:3306/springcloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+      driver-class-name:  com.mysql.jdbc.Driver
+      username:  springcloud
+      password: springcloud
+      initial-size:  10
+      max-active:  50
+      min-idle:  10
+      max-wait:  60000
+      pool-prepared-statements:  true
+      max-pool-prepared-statement-per-connection-size:  20
+      validation-query:  SELECT 1 FROM DUAL
+      test-on-borrow:  false
+      test-on-return:  false
+      test-while-idle:  true
+      time-between-eviction-runs-millis:  60000
+      filters:  stat,wall
+#  security:
+#    user:
+#      name: admin
+#      password: admin
+#      roles:
+#        - USER
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.st.entity
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@eureka1:7001/eureka,http://admin:admin@eureka2:7002/eureka,http://admin:admin@eureka3:7003/eureka
+#      defaultZone: http://admin:admin@localhost:7001/eureka
+#      defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: cloud-provider-product
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 2 # 设置心跳的时间间隔（默认是30秒）
+    lease-expiration-duration-in-seconds: 5 # 如果超过了5秒，就认为服务挂了（默认是90秒）
+
