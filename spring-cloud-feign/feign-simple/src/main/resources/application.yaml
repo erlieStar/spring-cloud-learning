@@ -5,5 +5,4 @@ eureka:
   client:
     register-with-eureka: false
     service-url:
-      defaultZone: http://admin:admin@localhost:7001/eureka
-#      defaultZone: http://admin:admin@localhost:7001/eureka,http://admin:admin@localhost:7002/eureka,http://admin:admin@localhost:7003/eureka
+      defaultZone: http://localhost:7001/eureka

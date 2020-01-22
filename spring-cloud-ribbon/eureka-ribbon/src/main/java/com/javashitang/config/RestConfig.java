@@ -22,19 +22,4 @@ public class RestConfig {
         return new RestTemplate();
     }
 
-    @Bean
-    public HttpHeaders getHeaders() {
-        HttpHeaders headers = new HttpHeaders();
-        String auth = "admin:admin";
-        byte[] encodeAuth = Base64.getEncoder().encode(auth.getBytes(Charset.forName("US-ASCII")));
-        String authHeader = "Basic" + new String(encodeAuth);
-        headers.set("Authorization", authHeader);
-        return headers;
-    }
-
-//    @Bean
-//    public IRule ribbonRule() {
-//        return new RandomRule();
-//    }
-
 }
