@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -16,19 +17,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients
-public class ConsumerFeign {
+public class ConsumerFeignHystrix {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerFeign.class);
+        SpringApplication.run(ConsumerFeignHystrix.class);
     }
 
     @Autowired
     private SimpleClient simpleClient;
 
-    @FeignClient(value = "producer-simple")
+    @FeignClient(value = "producer-simple", fallback = SimpleClientHystrix.class)
     public interface SimpleClient {
         @RequestMapping("hello")
         String hello(@RequestParam("name") String name);
+    }
+
+    @Component
+    public class SimpleClientHystrix implements SimpleClient {
+        public String hello(String name) {
+            return "hello " + name + " an error occur";
+        }
     }
 
     @RequestMapping("hello")

@@ -3,10 +3,10 @@ server:
 
 spring:
   application:
-    name: consumer-ribbon
+    name: consumer-feign-hystrix
 
 eureka:
   client:
     register-with-eureka: false
     service-url:
-      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://localhost:7001/eurekan

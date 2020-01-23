@@ -25,7 +25,7 @@ public class ProviderSimple {
     private String port;
 
     @RequestMapping("hello")
-    public String hello(@RequestParam("name") String name) {
-        return "hello " + name + ", i am from port:" + port;
+    public String hello() {
+        return "hello, i am from port:" + port;
     }
 }

@@ -1,0 +1,19 @@
+server:
+  port: 9501
+
+spring:
+  application:
+    name: zuul-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+zuul:
+  routes:
+    # 将cloud-provider-product服务的接口映射为product-proxy
+    cloud-provider-product: /product-proxy/**
+  # 屏蔽通过服务名访问的方式
+#  ignored-services:
+#    "*"
+# TODO 验证不能通过服务名访问
