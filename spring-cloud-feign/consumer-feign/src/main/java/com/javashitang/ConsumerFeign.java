@@ -12,9 +12,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients("com.javashitang.msdao")
-public class ConsumerFeignApp {
+public class ConsumerFeign {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerFeignApp.class);
+        SpringApplication.run(ConsumerFeign.class);
     }
 }

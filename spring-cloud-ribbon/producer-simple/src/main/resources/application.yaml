@@ -1,13 +1,12 @@
 server:
-  port: 80
+  port: 8080
 
-
+spring:
+  application:
+    name: provider-simple
 
 eureka:
   client:
-    register-with-eureka: false
     service-url:
       defaultZone: http://localhost:7001/eureka
-spring:
-  application:
-    name: consumer-feign
+
