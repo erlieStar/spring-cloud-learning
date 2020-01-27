@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableEurekaClient
 @SpringBootApplication
-public class ProviderSimple {
+public class ProducerSimple {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProviderSimple.class);
+        SpringApplication.run(ProducerSimple.class);
     }
 
     @Value("${server.port}")
     private String port;
 
     @RequestMapping("hello")
-    public String hello() {
-        return "hello, i am from port:" + port;
+    public String hello(@RequestParam String name) {
+        return "hello " + name  + ", I am from port: " + port;
     }
 }
