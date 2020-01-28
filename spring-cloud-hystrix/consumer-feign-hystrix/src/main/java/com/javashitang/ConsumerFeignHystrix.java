@@ -9,14 +9,16 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Author: lilimin
  * @Date: 2019/7/31 20:30
  */
-@SpringBootApplication
+@RestController
 @EnableEurekaClient
 @EnableFeignClients
+@SpringBootApplication
 public class ConsumerFeignHystrix {
 
     public static void main(String[] args) {
@@ -29,13 +31,13 @@ public class ConsumerFeignHystrix {
     @FeignClient(value = "producer-simple", fallback = SimpleClientHystrix.class)
     public interface SimpleClient {
         @RequestMapping("hello")
-        String hello(@RequestParam("name") String name);
+        String hello(@RequestParam String name);
     }
 
     @Component
     public class SimpleClientHystrix implements SimpleClient {
         public String hello(String name) {
-            return "hello " + name + " an error occur";
+            return "hello " + name + ", an error occur";
         }
     }
 

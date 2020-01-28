@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
  * @Date: 2019/7/31 20:30
  */
 @RestController
+@EnableHystrix
 @EnableEurekaClient
 @SpringBootApplication
 public class ConsumerRibbonHystrix {
@@ -26,7 +28,7 @@ public class ConsumerRibbonHystrix {
     }
 
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     @Bean
     @LoadBalanced
@@ -35,12 +37,12 @@ public class ConsumerRibbonHystrix {
     }
 
     @GetMapping("hello")
-    @HystrixCommand(fallbackMethod = "hiError")
+    @HystrixCommand(fallbackMethod = "helloError")
     public String hello(@RequestParam String name) {
         return restTemplate.getForObject("http://PRODUCER-SIMPLE/hello?name=" + name, String.class);
     }
 
     public String helloError(String name) {
-        return "hello " + name + " an error occur";
+        return "hello " + name + ", an error occur";
     }
 }

@@ -1,12 +1,11 @@
 server:
-  port: 80
+  port: 9002
 
 spring:
   application:
-    name: consumer-ribbon
+    name: consumer-ribbon-hystrix
 
 eureka:
   client:
-    register-with-eureka: false
     service-url:
       defaultZone: http://localhost:7001/eureka
