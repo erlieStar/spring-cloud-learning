@@ -12,27 +12,27 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Component
 public class AccessFilter extends ZuulFilter {
-		public String filterType() {
-				return "pre";
-		}
+    public String filterType() {
+        return "pre";
+    }
 
-		public int filterOrder() {
-				return 0;
-		}
+    public int filterOrder() {
+        return 0;
+    }
 
-		public boolean shouldFilter() {
-				return true;
-		}
+    public boolean shouldFilter() {
+        return true;
+    }
 
-		public Object run() throws ZuulException {
-				RequestContext ctx = RequestContext.getCurrentContext();
-				HttpServletRequest request = ctx.getRequest();
-				Object accessToken = request.getParameter("accessToken");
-				if (accessToken == null) {
-						ctx.setSendZuulResponse(false);
-						ctx.setResponseStatusCode(401);
-						return null;
-				}
-				return null;
-		}
+    public Object run() throws ZuulException {
+        RequestContext ctx = RequestContext.getCurrentContext();
+        HttpServletRequest request = ctx.getRequest();
+        Object accessToken = request.getParameter("accessToken");
+        if (accessToken == null) {
+            ctx.setSendZuulResponse(false);
+            ctx.setResponseStatusCode(401);
+            return null;
+        }
+        return null;
+    }
 }
