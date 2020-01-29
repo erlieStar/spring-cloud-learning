@@ -6,6 +6,7 @@ import com.netflix.zuul.exception.ZuulException;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 /**
  * 判断用户是否有访问权限的过滤器
@@ -31,6 +32,11 @@ public class AccessFilter extends ZuulFilter {
         if (accessToken == null) {
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
+            try {
+                ctx.getResponse().getWriter().write("accessToken is empty");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return null;
         }
         return null;

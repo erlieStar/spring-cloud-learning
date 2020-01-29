@@ -1,5 +1,5 @@
 server:
-  port: 10000
+  port: 10001
 
 spring:
   application:
@@ -14,8 +14,8 @@ zuul:
   routes:
     api-ribbon:
       path: /api-ribbon/**
-      serviceId: consumer-ribbon
-    consumer-feign:
+      serviceId: consumer-ribbon-hystrix
+    api-feign:
       path: /api-feign/**
-      serviceId: consumer-feign
+      serviceId: consumer-feign-hystrix
 
