@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/erlieStar/spring-cloud-learning # 配置github地址
+          search-paths: config-repo # 仓库的相对地址
+          username: # github仓库的账号，公有仓库可以不用配置
+          password: # github仓库的密码，公有仓库可以不用配置
+      label: master # 配置仓库的分支
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+

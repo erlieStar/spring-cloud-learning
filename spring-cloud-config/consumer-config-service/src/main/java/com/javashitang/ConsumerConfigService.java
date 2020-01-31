@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @SpringBootApplication
-public class ConsumerConfig {
+public class ConsumerConfigService {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerConfig.class);
+        SpringApplication.run(ConsumerConfigService.class);
     }
 
     @Value("${from}")
