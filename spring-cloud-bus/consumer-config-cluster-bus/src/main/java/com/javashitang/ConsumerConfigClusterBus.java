@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableEurekaClient
 @SpringBootApplication
-public class ConsumerConfigCluster {
+public class ConsumerConfigClusterBus {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerConfigCluster.class);
+        SpringApplication.run(ConsumerConfigClusterBus.class);
     }
 
     @Value("${from}")

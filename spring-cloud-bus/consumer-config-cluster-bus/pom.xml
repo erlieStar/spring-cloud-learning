@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.javashitang</groupId>
-    <artifactId>consumer-config-cluster</artifactId>
+    <artifactId>consumer-config-cluster-bus</artifactId>
     <version>1.0</version>
 
     <properties>
@@ -52,6 +52,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
 
     </dependencies>

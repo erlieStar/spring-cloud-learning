@@ -1,17 +1,25 @@
 server:
-  port: 9090
+  port: 6001
 
 spring:
   application:
     name: javashitang # 要获取的配置的应用名
   cloud:
     config:
-      # uri: http://localhost:8080 # 配置中心config-server的地址
       profile: dev # 对应配置文件中的{profile}部分
       label: master # 对应配置文件中的{label}部分
       discovery:
         enabled: true
         service-id: config-cluster
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+  rabbitmq:
+    host: myhost
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   client:
@@ -22,4 +30,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh
+        include: bus-refresh
