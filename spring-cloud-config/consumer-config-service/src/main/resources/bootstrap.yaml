@@ -9,3 +9,9 @@ spring:
       uri: http://localhost:8080 # 配置中心config-server的地址
       profile: dev # 对应配置文件中的{profile}部分
       label: master # 对应配置文件中的{label}部分，git即分支名
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh

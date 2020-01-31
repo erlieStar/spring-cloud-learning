@@ -1,9 +1,9 @@
 server:
-  port: 8080
+  port: 9080
 
 spring:
   application:
-    name: config-service
+    name: config-cluster
   cloud:
     config:
       server:
