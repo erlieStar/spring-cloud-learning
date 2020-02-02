@@ -6,8 +6,8 @@ spring:
     name: javashitang # 要获取的配置的应用名
   cloud:
     config:
-      profile: dev # 对应配置文件中的{profile}部分
-      label: master # 对应配置文件中的{label}部分
+      profile: dev
+      label: master
       discovery:
         enabled: true
         service-id: config-cluster
