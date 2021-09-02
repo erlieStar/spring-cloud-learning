@@ -26,7 +26,10 @@ public class ConsumerFeign {
 
     @Autowired
     private SimpleClient simpleClient;
-    //producer-simple:8001
+
+    // producer-simple:8001
+    // 可以不通过eureka获取producer-simple的地址，直接通过url指定地址，例如
+    // @FeignClient(value = "producer-simple", url = "127.0.0.1:8001")
     @FeignClient(value = "producer-simple")
     public interface SimpleClient {
         @RequestMapping("hello")
